@@ -6,38 +6,36 @@
 //  writing by an officer of ROSEN. All Rights Reserved.
 // </copyright>
 
-namespace Marketplace.Dal.Repositories
+using System.Threading.Tasks;
+using Marketplace.Core.Dal;
+using Marketplace.Core.Model;
+
+namespace Marketplace.Dal.Repositories;
+
+public class UserRepository : IUserRepository
 {
-    using System.Threading.Tasks;
-    using Marketplace.Core.Dal;
-    using Marketplace.Core.Model;
-    using Microsoft.EntityFrameworkCore;
+    #region Fields
 
-    public class UserRepository : IUserRepository
+    private readonly MarketplaceDb _context;
+
+    #endregion
+
+    #region Constructors
+
+    public UserRepository()
     {
-        #region Fields
-
-        private MarketplaceContext context;
-
-        #endregion
-
-        #region Constructors
-
-        public UserRepository()
-        {
-            this.context = new MarketplaceContext();
-        }
-
-        #endregion
-
-        #region Methods
-
-        /// <inheritdoc />
-        public async Task<User[]> GetAllUsersAsync()
-        {
-            return await this.context.Users.ToArrayAsync();
-        }
-
-        #endregion
+        _context = new MarketplaceDb();
     }
+
+    #endregion
+
+    #region Methods
+
+    /// <inheritdoc />
+    public async Task<User[]> GetAllUsersAsync()
+    {
+        return await _context.GetUsersAsync();
+    }
+
+    #endregion
 }

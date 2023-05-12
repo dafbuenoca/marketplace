@@ -6,24 +6,23 @@
 //  writing by an officer of ROSEN. All Rights Reserved.
 // </copyright>
 
-namespace Marketplace.Core.Dal
+using System.Threading.Tasks;
+using Marketplace.Core.Model;
+
+namespace Marketplace.Core.Dal;
+
+/// <summary>
+///     Contract for the User data access
+/// </summary>
+public interface IUserRepository
 {
-    using System.Threading.Tasks;
-    using Marketplace.Core.Model;
+    #region Methods
 
     /// <summary>
-    /// Contract for the User data access
+    ///     Gets all users asynchronous.
     /// </summary>
-    public interface IUserRepository
-    {
-        #region Methods
+    /// <returns>Array of users</returns>
+    Task<User[]> GetAllUsersAsync();
 
-        /// <summary>
-        /// Gets all users asynchronous.
-        /// </summary>
-        /// <returns>Array of users</returns>
-        Task<User[]> GetAllUsersAsync();
-
-        #endregion
-    }
+    #endregion
 }

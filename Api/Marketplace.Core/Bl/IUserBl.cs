@@ -6,25 +6,24 @@
 //  writing by an officer of ROSEN. All Rights Reserved.
 // </copyright>
 
-namespace Marketplace.Core.Bl
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Marketplace.Core.Model;
+
+namespace Marketplace.Core.Bl;
+
+/// <summary>
+///     Contract for the User logic
+/// </summary>
+public interface IUserBl
 {
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using Marketplace.Core.Model;
+    #region Methods
 
     /// <summary>
-    /// Contract for the User logic
+    ///     Gets the users.
     /// </summary>
-    public interface IUserBl
-    {
-        #region Methods
+    /// <returns>LIst of users</returns>
+    Task<IEnumerable<User>> GetUsersAsync();
 
-        /// <summary>
-        /// Gets the users.
-        /// </summary>
-        /// <returns>LIst of users</returns>
-        Task<IEnumerable<User>> GetUsersAsync();
-
-        #endregion
-    }
+    #endregion
 }
