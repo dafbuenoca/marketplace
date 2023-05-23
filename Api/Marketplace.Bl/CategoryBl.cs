@@ -15,26 +15,26 @@ using Marketplace.Core.Model;
 namespace Marketplace.Bl;
 
 /// <summary>
-///     Users' logic
+///     Categories logic
 /// </summary>
-/// <seealso cref="Marketplace.Core.Bl.IUserBl" />
-public class UserBl : IUserBl
+/// <seealso cref="Marketplace.Core.Bl.ICategoryBl" />
+public class CategoryBl : ICategoryBl
 {
     #region Fields
 
-    private readonly IUserRepository userRepository;
+    private readonly ICategoryRepository categoryRepository;
 
     #endregion
 
     #region Constructors
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="UserBl" /> class.
+    ///     Initializes a new instance of the <see cref="CategoryBl" /> class.
     /// </summary>
-    /// <param name="userRepository">The user repository.</param>
-    public UserBl(IUserRepository userRepository)
+    /// <param name="categoryRepository">The category repository.</param>
+    public CategoryBl(ICategoryRepository categoryRepository)
     {
-        this.userRepository = userRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     #endregion
@@ -42,11 +42,10 @@ public class UserBl : IUserBl
     #region Methods
 
     /// <inheritdoc />
-    public async Task<IEnumerable<User>> GetUsersAsync()
+    public async Task<IEnumerable<Category>> GetCategoriesAsync()
     {
-        return await userRepository.GetAllUsersAsync().ConfigureAwait(false);
+        return await categoryRepository.GetAllCategoriesAsync().ConfigureAwait(false);
     }
-
 
     #endregion
 }

@@ -48,6 +48,8 @@ namespace Marketplace.Api
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Marketplace.Api v1"));
             }
 
+            app.UseCors();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -62,9 +64,21 @@ namespace Marketplace.Api
         {
             services.AddControllers();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "Marketplace.Api", Version = "v1" }); });
-
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                });
+            });
             services.AddScoped<IUserBl, UserBl>();
+            services.AddScoped<ICategoryBl, CategoryBl>();
+            services.AddScoped<IOfferBl, OfferBl>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IOfferRepository, OfferRepository>();
         }
 
         #endregion

@@ -18,32 +18,32 @@ namespace Marketplace.Api.Controllers
     using Microsoft.Extensions.Logging;
 
     /// <summary>
-    /// Services for Users
+    /// Services for Categories
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
     [ApiController]
     [Route("[controller]")]
-    public class UserController : ControllerBase
+    public class CategoryController : ControllerBase
     {
         #region Fields
 
-        private readonly ILogger<UserController> logger;
+        private readonly ILogger<CategoryController> logger;
 
-        private readonly IUserBl userBl;
+        private readonly ICategoryBl categoryBl;
 
         #endregion
 
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UserController"/> class.
+        /// Initializes a new instance of the <see cref="CategoryController"/> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
-        /// <param name="userBl">The user business logic.</param>
-        public UserController(ILogger<UserController> logger, IUserBl userBl)
+        /// <param name="categoryBl">The category business logic.</param>
+        public CategoryController(ILogger<CategoryController> logger, ICategoryBl categoryBl)
         {
             this.logger = logger;
-            this.userBl = userBl;
+            this.categoryBl = categoryBl;
         }
 
         #endregion
@@ -51,16 +51,17 @@ namespace Marketplace.Api.Controllers
         #region Methods
 
         /// <summary>
-        /// Gets the list of users.
+        /// Gets the list of categorys.
         /// </summary>
-        /// <returns>List of users</returns>
+        /// <returns>List of categorys</returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> Get()
+        public async Task<ActionResult<IEnumerable<Category>>> Get()
         {
-            IEnumerable<User> result;
+            IEnumerable<Category> result;
+
             try
             {
-                result = await this.userBl.GetUsersAsync().ConfigureAwait(false);
+                result = await this.categoryBl.GetCategoriesAsync().ConfigureAwait(false);
             }
             catch (Exception ex)
             {

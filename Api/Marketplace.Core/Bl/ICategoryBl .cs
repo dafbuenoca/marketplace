@@ -6,26 +6,24 @@
 //  writing by an officer of ROSEN. All Rights Reserved.
 // </copyright>
 
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Marketplace.Core.Model;
 
-namespace Marketplace.Core.Dal;
+namespace Marketplace.Core.Bl;
 
 /// <summary>
-///     Contract for the User data access
+///     Contract for the category logic
 /// </summary>
-public interface IUserRepository
+public interface ICategoryBl
 {
     #region Methods
 
     /// <summary>
-    ///     Gets all users asynchronous.
+    ///     Gets the categories.
     /// </summary>
-    /// <returns>Array of users</returns>
-    Task<User[]> GetAllUsersAsync();
+    /// <returns>LIst of categories</returns>
+    Task<IEnumerable<Category>> GetCategoriesAsync();
 
-    Task<User> GetUserByIdAsync(int userId);
-
-    Task<User> CreateUserAsync(User user);
     #endregion
 }

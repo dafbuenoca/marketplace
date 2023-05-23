@@ -12,7 +12,7 @@ using Marketplace.Core.Model;
 
 namespace Marketplace.Dal.Repositories;
 
-public class UserRepository : IUserRepository
+public class CategoryRepository : ICategoryRepository
 {
     #region Fields
 
@@ -22,7 +22,7 @@ public class UserRepository : IUserRepository
 
     #region Constructors
 
-    public UserRepository()
+    public CategoryRepository()
     {
         _context = new MarketplaceDb();
     }
@@ -32,19 +32,9 @@ public class UserRepository : IUserRepository
     #region Methods
 
     /// <inheritdoc />
-    public async Task<User[]> GetAllUsersAsync()
+    public async Task<Category[]> GetAllCategoriesAsync()
     {
-        return await _context.GetUsersAsync();
-    }
-
-    public async Task<User> GetUserByIdAsync(int userId) { 
-    
-        return await _context.GetUserByIdAsync(userId);
-    }
-
-    public async Task<User> CreateUserAsync(User user)
-    {
-        return await _context.CreateUserAsync(user);
+        return await _context.GetCategoriesAsync();
     }
 
     #endregion

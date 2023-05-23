@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from './authentication/login/login.component';
 import {OfferListComponent} from './offers/offer-list/offer-list.component';
 import {OfferCreationComponent} from './offers/offer-creation/offer-creation.component';
-
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   {path: 'a', component: LoginComponent, pathMatch: 'full'},
@@ -12,7 +12,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes),
+    CommonModule
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

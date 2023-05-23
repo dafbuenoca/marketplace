@@ -1,26 +1,30 @@
-<form class="offer-form">
-  <h3>Post new Offer</h3>
-  <div class="form-group">
-    <label for="title">Title</label>
-    <input id="title" class="" placeholder="Title"/>
+<div class="row">
+  <div class="col  align-self-center">
+    <form [formGroup]="offerForm" (submit)="offerSubmit()">
+      <h3>Post new Offer</h3>
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input id="title" formControlName="title" class="form-control" placeholder="Title"/>
+      </div>
+      <div class="mb-3">
+        <label for="picture-url" class="form-label">Picture URL</label>
+        <input id="picture-url" formControlName="pictureUrl" placeholder="offers/iphone.jpg" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description </label>
+        <textarea id="description" formControlName="description" placeholder="Description" rows="5" class="form-control"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input id="location" formControlName="location" class="form-control" placeholder="Country, city, neighborhood, the office, my desk, etc..."/>
+      </div>
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select id="category" formControlName="categoryId" class="form-select">
+          <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form>    
   </div>
-  <div class="form-group">
-    <label for="picture-url">Picture URL</label>
-    <input id="picture-url" placeholder="offers/iphone.jpg"/>
-  </div>
-  <div class="form-group">
-    <label for="description">Description</label>
-    <textarea id="description" class="" placeholder="Description" rows="5"></textarea>
-  </div>
-  <div class="form-group">
-    <label for="location">Location</label>
-    <input id="location" class="" placeholder="Country, city, neighborhood, the office, my desk, etc..."/>
-  </div>
-  <div class="form-group">
-    <label for="category">Category</label>
-    <select id="category" class="">
-      <option [value]="item" *ngFor="let item of categories">{{item}}</option>
-    </select>
-  </div>
-  <button type="submit" class="offer-submit-button">Create</button>
-</form>
+</div>
